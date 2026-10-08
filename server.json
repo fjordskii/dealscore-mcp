@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.cardealscore/dealscore",
+  "description": "For AI agents: grade a used car's asking price vs live market comps.",
+  "title": "DealScore",
+  "version": "0.1.1",
+  "websiteUrl": "https://cardealscore.com",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://cardealscore.com/api/mcp",
+      "headers": [
+        {
+          "description": "Leave empty to use OAuth (browser sign-in). Set only if the client cannot run OAuth.",
+          "isSecret": true,
+          "name": "x-api-key"
+        }
+      ]
+    }
+  ]
+}

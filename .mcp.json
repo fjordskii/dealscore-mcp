@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dealscore": {
+      "type": "http",
+      "url": "https://cardealscore.com/api/mcp"
+    }
+  }
+}
