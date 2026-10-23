@@ -1,6 +1,6 @@
 # DealScore MCP
 
-**A used-car price check for AI agents.** DealScore is a hosted remote [Model Context Protocol](https://modelcontextprotocol.io) server. Your agent sends a vehicle (VIN, or year + make + model), an asking price, and the mileage. DealScore grades that price against live US dealer comps and returns a grade, a 0–100 score, the expected price band, and a plain-text brief with risks that the agent can quote.
+**A used-car price check for AI agents.** DealScore is a hosted remote [Model Context Protocol](https://modelcontextprotocol.io) server. Your agent sends a vehicle (VIN, or year + make + model), an asking price, and the mileage. DealScore grades that price against live US dealer comps and returns a grade, a 0 to 100 score, the expected price band, and a plain-text brief with risks that the agent can quote.
 
 This repository is a **listing and documentation repo only**. It has no server source code and nothing to install or run. The server is hosted at the endpoint below.
 
@@ -21,7 +21,7 @@ This repository is a **listing and documentation repo only**. It has no server s
 | Tool | What it does |
 |---|---|
 | `score_deal` | Grades a used car's asking price against expected market value from live US dealer comps. Returns the grade (Great / Good / Fair / High / Overpriced), the score, the expected price band, the brief, and the risks. |
-| `explain_grade` | Explains the `score_v1` rubric grade for a given `delta_pct`. This tool is read-only. It doesn't make a comps call. |
+| `explain_grade` | Explains the `score_v2` rubric grade for a given `delta_pct`. This tool is read-only. It doesn't make a comps call. |
 | `health` | Reports service health, coverage, cache policy, and limitations. This tool is read-only. |
 
 `score_deal` inputs: `asking_price` and `mileage` are required. You also need either a `vin` or `year` + `make` + `model`. `trim` and a 5-digit `zip` are optional. If you leave out `zip`, DealScore uses US national comps.
@@ -191,6 +191,7 @@ curl -s -X POST https://cardealscore.com/api/mcp \
 - `server.json`: a mirror of the Official MCP Registry entry `com.cardealscore/dealscore`. The registry is the source of truth.
 - `.mcp.json`: a portable client config.
 - `LICENSE`: MIT. It covers the documentation and config snippets in this repository only.
+- `scripts/check-readme.mjs`: checks that this README names the live rubric version and stays free of stale hosts. Run `node scripts/check-readme.mjs`.
 
 ## Contact
 
